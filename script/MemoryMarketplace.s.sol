@@ -17,25 +17,6 @@ contract DeployMemoryMarketplace is Script {
 
         vm.stopBroadcast();
 
-        // Output verification command to console
-        console.log("\n=== To verify the contract, run the following command ===\n");
-
-        console.log(
-            string.concat(
-                "forge verify-contract ",
-                vm.toString(address(marketplace)),
-                " src/MemoryMarketplace.sol:MemoryMarketplace",
-                " --rpc-url https://testnet-rpc.monad.xyz"
-                " --verifier sourcify",
-                " --verifier-url https://sourcify-api-monad.blockvision.org",
-                " --constructor-args $(cast abi-encode 'constructor(address)' ",
-                vm.toString(paymentToken),
-                ")",
-                " --optimizer-runs 200",
-                " --via-ir"
-            )
-        );
-
         console.log("\n=====================================================\n");
     }
 }
